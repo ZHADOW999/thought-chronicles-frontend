@@ -14,6 +14,7 @@ const UseFetch = (url) => {
                     setData(res.data);
                     setError(null)
                     setLoading(false)
+                    //console.log(res.data)
                 })
                 .catch(err => {
                     // Check if the error is an Axios error

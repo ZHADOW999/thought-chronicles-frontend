@@ -9,7 +9,7 @@ const Navbar = () => {
     
     const handleLogout = async () => {
         try {
-            await api.post('/logout', {}, { withCredentials: true });
+            await api.post('/api/logout', {}, { withCredentials: true });
             localStorage.removeItem('isAuthenticated'); // Clear authentication state
             navigate('/');  // Use React Router navigation
         } catch (error) {

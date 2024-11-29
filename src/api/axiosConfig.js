@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:4000',  // Your FastAPI backend URL
+  baseURL: 'https://tc.a.7o7.cx',  // Your FastAPI backend URL
   withCredentials: true,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     'Accept': 'application/json',
-}
+    'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+  }
 });
 
 // Add response interceptor for token refresh
@@ -23,7 +24,12 @@ api.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
-        await api.post('api/refresh');
+        const response = await api.post('api/refresh');
+        const newToken = response.data.token;
+        console.log('New Token:', newToken);
+        localStorage.setItem('authToken', newToken);
+        api.defaults.headers['Authorization'] = `Bearer ${newToken}`;
+        originalRequest.headers['Authorization'] = `Bearer ${newToken}`;
         return api(originalRequest);
       } catch (refreshError) {
         window.location.href = '/';
@@ -47,5 +53,7 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+console.log('Auth Token:', localStorage.getItem('authToken'));
 
 export default api;

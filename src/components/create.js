@@ -67,7 +67,7 @@ const EnhancedEditor = () => {
         });
 
         try {
-            const response = await axios.post('http://localhost:8000', formData, {
+            const response = await axios.post('https://tc.a.7o7.cx/api/blogs', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
 

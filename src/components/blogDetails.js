@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 const BlogDetails = () => {
     const {id} = useParams();
-    const {data:blog,loading,error} = UseFetch(`http://localhost:4000/api/blogs/${id}`);
+    const {data:blog,loading,error} = UseFetch(`http://tc.a.7o7.cx/api/blogs/${id}`);
     return ( 
         <div>
             {loading && <div className="text-3xl     mt-40 w-[80%] m-auto flex flex-col gap-5 justify-center items-center">Loading...</div>}
