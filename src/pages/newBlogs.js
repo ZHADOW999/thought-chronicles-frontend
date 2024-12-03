@@ -32,8 +32,8 @@ const NewBlog = () => {
 
     return ( 
         
-        <form className="flex flex-col justify-center w-[100%] items-center mt-20" onSubmit={handleSubmit}>
-            <div className="flex flex-col space-y-2 w-[50%]">
+        <form className="flex flex-col justify-center sm:w-[100%] w-[90%] m-auto items-center mt-20" onSubmit={handleSubmit}>
+            <div className="flex flex-col space-y-2 sm:w-[50%] w-full">
                 <label>Blog title</label>
                 <input
                 className="w-full h-20 rounded-2xl indent-5"
@@ -44,7 +44,7 @@ const NewBlog = () => {
                 ></input>
 
             </div>
-            <div className="flex flex-col space-y-2 w-[50%]">
+            <div className="flex flex-col space-y-2 sm:w-[50%] w-full">
                 <label>Blog Content</label>
                 <textarea
                 className="w-full h-44 rounded-2xl indent-5"

@@ -4,7 +4,7 @@ const BlogList = ({blogs,title}) => {
     // const blogs = props.blogs;
     // const title = props.title
     return ( 
-        <div className="mt-40 w-[80%] m-auto">
+        <div className="sm:mt-36 mt-20 sm:w-[80%] w-[90%] m-auto pb-10">
             <h1 className="text-5xl font-black">
                 {title}
             </h1>
@@ -12,7 +12,7 @@ const BlogList = ({blogs,title}) => {
                
                     <div  key={blog.id} className="mt-10 bg-white shadow p-5 space-y-5">
                          <Link to={`/blogs/${blog.id}`}>
-                        <h2 className="text-4xl text-text-color font-sans font-black">{blog.title}</h2>
+                        <h2 className="sm:text-4xl text-2xl text-text-color font-sans font-black">{blog.title}</h2>
                         <p>Written by: {blog.owner.author}</p>
                         </Link>
                     </div>
