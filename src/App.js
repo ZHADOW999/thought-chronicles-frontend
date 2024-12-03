@@ -12,7 +12,7 @@ function App() {
     <Router>
       <Routes>
       <Route exact path="/" element={<AuthForm/>}/>
-        <Route  path="/home" element={<MainLayout><Home/></MainLayout>}/>
+        <Route  path="/blogs" element={<MainLayout><Home/></MainLayout>}/>
         <Route path="newblog" element={<MainLayout><NewBlog/></MainLayout>}/>
         <Route path="/blogs/:id" element={<MainLayout><BlogDetails/></MainLayout>}/>
         <Route path="/create" element={<MainLayout><CreateBlog/></MainLayout>}/>
