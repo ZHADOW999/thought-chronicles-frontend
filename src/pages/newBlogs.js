@@ -19,7 +19,7 @@ const NewBlog = () => {
         })
         .then(() => {
             setIspending(false);
-            navigate("/home");
+            navigate("/blogs");
             console.log("blog posted successfully");
         })
         .catch((error) => {

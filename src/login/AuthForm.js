@@ -63,7 +63,7 @@ const AuthForm = () => {
         console.log('Token stored:', token);
         
         localStorage.setItem('isAuthenticated', 'true');
-        navigate('/home');
+        navigate('/blogs');
       }
     })
     .catch(error => {
