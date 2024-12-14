@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { Flowbite } from "flowbite-react";
 //import { Flowbite } from "flowbite-react";
-// import { initFlowbite } from "flowbite";
+import { initFlowbite } from "flowbite";
 import React from "react";
 const SearchBar = ({onSearch}) => {
     const [inputValue, setInputValue] = useState("");
@@ -11,6 +11,10 @@ const SearchBar = ({onSearch}) => {
         
     };
 
+    useEffect(()=>{
+        initFlowbite();
+        
+    },[]);
     
 
     return ( 
