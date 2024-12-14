@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import bg from "../images/logo-1-bg.png"
 import { useState } from "react";
 
+
 import "../index.css"
 
 const Navbar = () => {
@@ -23,7 +24,10 @@ const Navbar = () => {
 
     return (
         <nav className="sm:w-[80%] w-[90%] mt-5 m-auto flex justify-between items-center relative">
-            <img src={bg} alt="logo" className="sm:w-20 sm:h-20 w-14 h-14 rounded-full" />
+            <div className="flex">
+                <img src={bg} alt="logo" className="sm:w-20 sm:h-20 w-14 h-14 rounded-full" />
+            
+            </div>
             <div onClick={() => setIsActive((prev) => !prev)} className={`sm:hidden ham-menu cursor-pointer ${IsActive ? "active" : ""}`}>
                 <span></span>
                 <span></span>

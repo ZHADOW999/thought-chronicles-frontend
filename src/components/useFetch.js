@@ -1,42 +1,98 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-const UseFetch = (url) => {
+// import axios from "axios";
+// import { useEffect, useState } from "react";
+
+// const UseFetch = (url, search) => {
+//     const [data, setData] = useState(null);
+//     const [error, setError] = useState(null);
+//     const [loading, setLoading] = useState(true);
+
+//     useEffect(() => {
+//         const fetchData = async () => {
+//             try {
+//                 setLoading(true);
+//                 const params = search ? { search } : {}; // Add search as a query param if available
+//                 const res = await axios.get(url, { params });
+
+//                 if (res.status < 200 || res.status >= 300) {
+//                     throw new Error('Could not get data from that resource');
+//                 }
+//                 console.log(res.data)
+//                 setData(res.data);
+//                 setError(null);
+//             } catch (err) {
+//                 if (axios.isAxiosError(err)) {
+//                     if (err.response) {
+//                         setError(`Error: ${err.response.status} - ${err.response.data.message || 'An error occurred'}`);
+//                     } else {
+//                         setError(err.message);
+//                     }
+//                 } else {
+//                     setError('An unexpected error occurred');
+//                 }
+//             } finally {
+//                 setLoading(false);
+//             }
+//         };
+
+//         fetchData();
+//     }, [url, search]); // Re-fetch data when URL or search term changes
+
+//     return { data, loading, error };
+// };
+
+// export default UseFetch;
+
+
+
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const UseFetch = (url, search) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        axios.get(url)
-                .then(res => {
-                    // Check if the response status is not in the 200 range
-                    if (res.status < 200 || res.status >= 300) {
-                        throw new Error('Could not get data from that resource');
-                    }
-                    setData(res.data);
-                    setError(null)
-                    setLoading(false)
-                    //console.log(res.data)
-                })
-                .catch(err => {
-                    // Check if the error is an Axios error
-                    if (axios.isAxiosError(err)) {
-                        console.error('Axios error:', err.message);
-                        // Optionally, check for response status codes
-                        if (err.response) {
-                            console.error('Response status:', err.response.status);
-                            console.error('Response data:', err.response.data);
-                            setError(`Error: ${err.response.status} - ${err.response.data.message || 'An error occurred'}`);
-                        } else {
-                            setError(err.message);
-                        }
-                    } else {
-                        console.error('Unexpected error:', err);
-                        setError('An unexpected error occurred');
-                    }
-                    setLoading(false)
-                });
 
-    }, [url]);
-    return {data,loading,error}
-}
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setLoading(true);
+                const params = search ? { search } : {}; // Add search as a query param if available
+
+                // Log the final URL being fetched (for debugging)
+                const finalUrl = search ? `${url}?search=${encodeURIComponent(search)}` : url;
+                console.log("Fetching data from URL:", finalUrl);
+
+                // Make the actual request to the backend
+                const res = await axios.get(finalUrl, { params });
+
+                if (res.status < 200 || res.status >= 300) {
+                    throw new Error('Could not get data from that resource');
+                }
+
+                //console.log(res.data);
+                setData(res.data);
+                setError(null);
+            } catch (err) {
+                if (axios.isAxiosError(err)) {
+                    if (err.response) {
+                        setError(`Error: ${err.response.status} - ${err.response.data.message || 'An error occurred'}`);
+                    } else {
+                        setError(err.message);
+                    }
+                } else {
+                    setError(`An unexpected error occurred: ${err.message || 'An error occurred'}`);
+                }
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+
+    
+    }, [url, search]); // Re-fetch data when URL or search term changes
+
+    return { data, loading, error };
+};
 
 export default UseFetch;
