@@ -23,7 +23,7 @@ const Home = () => {
             {loading && <div className="text-5xl text-center uppercase">Loading...</div>}
             <main className="sm:mt-20 mt-20 sm:w-[80%] w-[90%] m-auto pb-10">
                 <SearchBar onSearch={handleSearch}/>
-                {blogs && <BlogList blogs={blogs} title="All Blogs"/>}
+                {blogs && <BlogList blogs={blogs}/> }
             </main>
         </>
      );
