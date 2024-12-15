@@ -55,3 +55,21 @@ html{
 body{
   overflow-x: hidden;
 }
+
+@layer{
+  [type="text"]:focus{
+    @apply ring-0 ring-black ring-transparent ring-offset-bg-color-light1 ;
+  }
+
+  input:focus{
+    @apply ring-0 ring-black ring-transparent;
+  }
+
+  .MuiInputBase-input.css-yimnyd-MuiInputBase-input:focus{
+    @apply ring-0 ring-black ring-transparent;
+  }
+
+  [type="text"]:focus{
+    @apply ring-0 ring-black ring-transparent ;
+  }
+}

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://tc.a.7o7.cx',  // Your FastAPI backend URL
+  baseURL: 'http://127.0.0.1:4000',  // Your FastAPI backend URL
   // baseURL: 'http://localhost:4000',  // Your FastAPI backend URL
   withCredentials: true,
   headers: {

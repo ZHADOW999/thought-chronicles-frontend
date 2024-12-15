@@ -5,6 +5,7 @@ import NewBlog from "./pages/newBlogs";
 import AuthForm from "./login/AuthForm";
 import BlogDetails from "./components/blogDetails";
 import CreateBlog from "./components/create";
+import Profile from "./components/profiles";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="newblog" element={<MainLayout><NewBlog/></MainLayout>}/>
         <Route path="/blogs/:id" element={<MainLayout><BlogDetails/></MainLayout>}/>
         <Route path="/create" element={<MainLayout><CreateBlog/></MainLayout>}/>
+        <Route path="/profile/:userId" element={<MainLayout><Profile /></MainLayout>}/>
       </Routes>
     </Router>
   );
