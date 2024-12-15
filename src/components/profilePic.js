@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const ProfilePicture = ({ userId, fallbackImage, altText = "Profile Picture" }) => {
+const ProfilePicture = ({ userId, fallbackImage, altText = "Profile Picture",size }) => {
   const [profilePic, setProfilePic] = useState(null);
   const [error, setError] = useState(false);
 
@@ -41,7 +41,7 @@ const ProfilePicture = ({ userId, fallbackImage, altText = "Profile Picture" }) 
   }
 
   return profilePic ? (
-    <img className="w-20 h-20  rounded-full" src={profilePic} alt={altText} />
+    <img className={`object-cover w-${size} h-${size}  rounded-full`} src={profilePic} alt={altText} />
   ) : (
     <div className="relative w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
     <svg className="absolute w-20 h-24 text-gray-400 -left-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
