@@ -5,7 +5,8 @@ import NewBlog from "./pages/newBlogs";
 import AuthForm from "./login/AuthForm";
 import BlogDetails from "./components/blogDetails";
 import CreateBlog from "./components/create";
-import Profile from "./components/profiles";
+import Profile from "./pages/profiles";
+
 
 
 function App() {

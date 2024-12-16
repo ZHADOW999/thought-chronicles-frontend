@@ -18,32 +18,75 @@ const ProfilePicture = ({ userId, fallbackImage, altText = "Profile Picture",siz
         setError(false);
         setProfilePic(null);
 
-        const response = await fetch(`http://127.0.0.1:4000/api/users/${userId}/profile-picture`);
+        const response = await fetch(
+          `http://127.0.0.1:4000/api/users/${userId}/profile-picture`
+        );
+
+        if (response.status === 404) {
+          // If no profile picture exists, just return and don't log the error
+          return;
+        }
+
         if (!response.ok) {
-          throw new Error("Failed to fetch profile picture");
+          throw new Error(`Failed to fetch profile picture: ${response.status}`);
         }
 
         const blob = await response.blob();
         const imageUrl = URL.createObjectURL(blob);
         setProfilePic(imageUrl);
       } catch (err) {
+        // Log only actual errors (not 404s)
+        if (err.message && !err.message.includes("404")) {
+          console.error(err.message);
+        }
         setError(true);
       }
     };
 
     fetchProfilePic();
-  }, [userId]); // Re-run the effect when userId changes
+  }, [userId]);
 
   if (error && fallbackImage) {
-    return <div class=" relative w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
-    <svg class="-z-0 absolute w-20 h-24 text-gray-400 -left-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-</div>
+    return (
+      <div className="relative w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+        <svg
+          className="-z-0 absolute w-20 h-24 text-gray-400 -left-0"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+            clipRule="evenodd"
+          ></path>
+        </svg>
+      </div>
+    );
   }
 
   return profilePic ? (
-    <img className={`object-cover w-${size} h-${size}  rounded-full`} src={profilePic} alt={altText} />
+    <img
+    style={{ width: `${size}px`, height: `${size}px` }}
+      className={`object-cover rounded-full cursor-pointer`}
+      src={profilePic}
+      alt={altText}
+    />
   ) : (
-    <p>Loading...</p>
+    <div className="relative w-20 h-20 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600">
+        <svg
+          className="-z-0 absolute w-20 h-24 text-gray-400 -left-0"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+            clipRule="evenodd"
+          ></path>
+        </svg>
+      </div>
   );
 };
 

@@ -10,7 +10,7 @@ const BlogDetails = () => {
         <div>
             {loading && <div className="text-3xl     mt-40 w-[80%] m-auto flex flex-col gap-5 justify-center items-center">Loading...</div>}
             {error && <div className="text-4xl uppercase mt-40 w-[80%] m-auto flex flex-col gap-5 justify-center items-center">{error}</div>}
-            {blog && (<article className="mt-20 w-[80%] m-auto flex flex-col gap-5 justify-center items-center">
+            {blog && (<article className="mt-32 w-[80%] m-auto flex flex-col gap-5 justify-center items-center">
                     <h2 className="text-4xl font-black">{blog.title}</h2>
                     <div>{blog.body}</div>
                     {/* <button onClick={handleClick}>Delete</button> */}
