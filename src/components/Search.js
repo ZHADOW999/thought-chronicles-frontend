@@ -85,8 +85,9 @@ const SearchBar = ({onSearch}) => {
 
 
 
-      <IconButton sx={{ p: 3 }}>
-        <SearchIcon />
+      <IconButton sx={{ p: 3 }} type="submit">
+        <SearchIcon 
+        />
       </IconButton>
     </Paper>
   );

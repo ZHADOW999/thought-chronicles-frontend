@@ -13,10 +13,10 @@ function App() {
   return (
     <Router>
       <Routes>
-      <Route exact path="/" element={<AuthForm/>}/>
-        <Route  path="/blogs" element={<MainLayout><Home/></MainLayout>}/>
+      <Route exact path="/login" element={<AuthForm/>}/>
+        <Route  path="/" element={<MainLayout><Home/></MainLayout>}/>
         <Route path="newblog" element={<MainLayout><NewBlog/></MainLayout>}/>
-        <Route path="/blogs/:id" element={<MainLayout><BlogDetails/></MainLayout>}/>
+        <Route path="/:id" element={<MainLayout><BlogDetails/></MainLayout>}/>
         <Route path="/create" element={<MainLayout><CreateBlog/></MainLayout>}/>
         <Route path="/profile/:userId" element={<MainLayout><Profile /></MainLayout>}/>
       </Routes>

@@ -30,7 +30,7 @@ const BlogList = ({ blogs }) => {
                         <div className="items-center  flex flex-row  justify-between">
                             <div className="flex flex-col justify-between h-full">
                                 <ProfilePicture
-                                    size={100}
+                                    size={80}
                                     userId={blog.Blog.owner_id}
                                     // fallbackImage="https://via.placeholder.com/150"
                                     altText={`User ${blog.Blog.owner_id}'s Profile Picture`}
@@ -43,10 +43,10 @@ const BlogList = ({ blogs }) => {
 
                             <div className="w-[40%] space-y-5">
                                 <h2 className="  sm:text-4xl text-2xl text-text-color font-sans font-black">{blog.Blog.title.substring(0, 30)}...</h2>
-                                <p className="text-gray-600 ">{blog.Blog.body.substring(0, 200)}...<Link to={`/blogs/${blog.Blog.id}`} className="text-1.5 hover:text-blue-600 hover:underline">Read more </Link></p>
+                                <p className="text-gray-600 ">{blog.Blog.body.substring(0, 200)}...<Link to={`/${blog.Blog.id}`} className="text-1.5 hover:text-blue-600 hover:underline">Read more </Link></p>
                                 <div className="flex flex-row gap-5 items-center">
                                     {/* follow */}
-                                    <span className="relative"
+                                    <span className="relative cursor-pointer"
                                         onMouseEnter={() => setHover1(blog.Blog.id)}
                                         onMouseLeave={() => setHover1(false)}
                                     >
@@ -63,10 +63,11 @@ const BlogList = ({ blogs }) => {
 
                                     {/* bookmark */}
                                     <span
+                                        
                                         onMouseEnter={() => setHover2(blog.Blog.id)}
                                         onMouseLeave={() => setHover2(false)}
 
-                                        className="relative">
+                                        className="relative cursor-pointer">
                                         <FontAwesomeIcon icon={faBookmark} className="hover:transition-all hover:duration-300 hover:ease-in-out hover:scale-110" />
 
                                         {hover2 === blog.Blog.id && (<span className="absolute -bottom-[200%] transform -translate-x-1/2  -translate-y-full bg-gray-700 text-white text-xs rounded py-1 px-2">
@@ -76,15 +77,15 @@ const BlogList = ({ blogs }) => {
                                     </span>
 
                                             {/* like */}
-                                    <span
+                                    <span 
                                         onMouseEnter={() => setHover3(blog.Blog.id)}
                                         onMouseLeave={() => setHover3(false)}
-                                        className="relative">
+                                        className="relative cursor-pointer">
                                         <FontAwesomeIcon icon={faHeart} className="hover:transition-all hover:duration-300 hover:ease-in-out hover:scale-110" />
 
                                         {hover3 === blog.Blog.id && (<span className="absolute -bottom-[200%] transform -translate-x-1/2  -translate-y-full bg-gray-700 text-white text-xs rounded py-1 px-2">
 
-                                            like
+                                            echo
                                         </span>)}
                                         <p className="sr-only">like</p>
                                     </span>
