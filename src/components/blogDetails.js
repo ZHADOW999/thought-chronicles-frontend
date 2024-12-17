@@ -22,7 +22,7 @@ const BlogDetails = () => {
                 },
             });
             console.log('Blog deleted successfully');
-            history('/');
+            history(`/profile/${userData.id}`);
         } catch (error) {
             console.error('Error deleting blog:', error);
         }
@@ -38,6 +38,7 @@ const BlogDetails = () => {
                     <h2 className="text-4xl font-black">{blog.Blog.title}</h2>
                     <div>{blog.Blog.body}</div>
                     <p className="text-[14px]">Written by: {blog.Blog.owner.author}</p>
+                    {blog.Images && blog.Images.length > 0 ? (  <img src={ `http://127.0.0.1:4000/${blog.Images[0].filename}`} alt="" className=" bg-gray-400 w-52 h-44 " />):(<p></p>)}
                     {userData && userData.id === blog.Blog.owner_id && 
 
                     <div>
@@ -52,6 +53,7 @@ const BlogDetails = () => {
                                     <button onClick={() => setDeletePopUp((prev) =>!prev)} className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-all ease-in-out duration-300">No</button>
                                 </div>
                             </div>
+                            
                             </div>}
                     </div>
                     }

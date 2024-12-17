@@ -102,7 +102,7 @@ const BlogList = ({ blogs }) => {
 
                             </div>
                             <div className={`${blog.Images && blog.Images.length > 0 ? "block":"hidden"}`}>
-                                {blog.Images && blog.Images.length > 0 ? (  <img src={blog.Images[0].filename} alt="" className=" bg-gray-400 w-52 h-44 " />):(<p></p>)}
+                                {blog.Images && blog.Images.length > 0 ? (  <img src={ `http://127.0.0.1:4000/${blog.Images[0].filename}`} alt="" className=" bg-gray-400 w-52 h-44 " />):(<p></p>)}
                             </div>
                         </div>
                     
