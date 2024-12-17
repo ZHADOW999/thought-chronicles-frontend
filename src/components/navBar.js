@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import api from "../api/axiosConfig";
 import { useNavigate } from "react-router-dom";
 import bg from "../images/logo-1-bg.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import "../index.css";
 import ProfilePicture from "./profilePic";
 import axios from "axios";
@@ -19,7 +19,7 @@ const Navbar = ({ userId }) => {
     const [lastScrollY, setLastScrollY] = useState(0); // Track last scroll position
 
     const navigate = useNavigate();
-    
+
     const handleLogout = async () => {
         try {
           // Send logout request to backend
@@ -54,20 +54,20 @@ useEffect(() => {
     fetchOwnerId();
 }, []);
 
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         if (typeof window !== "undefined") {
             const currentScrollY = window.scrollY;
             setShowNavbar(currentScrollY < lastScrollY || currentScrollY < 100); // Show navbar when scrolling up or at the top
             setLastScrollY(currentScrollY); // Update last scroll position
         }
-    };
+    },[lastScrollY])
 
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, [lastScrollY]);
+    }, [lastScrollY,handleScroll]);
 
     return (
         <nav className={`fixed z-50 sm:w-[90%] w-[90%] p-2 m-auto flex justify-between items-center top-0 left-0 right-0 bg-bg-color-light1 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}>

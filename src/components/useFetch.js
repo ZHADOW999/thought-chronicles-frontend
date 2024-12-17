@@ -85,7 +85,7 @@ const UseFetch = (url, search) => {
                     throw new Error('Could not get data from that resource');
                 }
 
-                //console.log(res.data);
+                console.log(res.data);
                 setData(res.data);
                 setError(null);
             } catch (err) {

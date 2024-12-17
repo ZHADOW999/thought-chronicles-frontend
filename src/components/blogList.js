@@ -3,12 +3,15 @@ import { useState } from "react";
 import ProfilePicture from "./profilePic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faHeart } from "@fortawesome/free-regular-svg-icons";
+import UseFetchLoggedUser from "./useFetchLoggedUser";
 
 const BlogList = ({ blogs }) => {
+    
     const [hover1, setHover1] = useState(null)
     const [hover2, setHover2] = useState(null)
     const [hover3, setHover3] = useState(null)
     const sortedBlogs = [...blogs].sort((a, b) => new Date(b.Blog.created_at) - new Date(a.Blog.created_at));
+    const { userData: userData, userLoader, userError } = UseFetchLoggedUser("/api/users/me");
 
     const formatDate = (dateString) => {
         const options = { month: 'short', day: 'numeric' };
@@ -27,7 +30,7 @@ const BlogList = ({ blogs }) => {
                 <div key={blog.Blog.id} className=" rounded-xl mt-10 bg-white shadow p-5 space-y-5">
                     
 
-                        <div className="items-center  flex flex-row  justify-between">
+                        <div className="items-center  flex flex-row w-full justify-between">
                             <div className="flex flex-col justify-between h-full">
                                 <ProfilePicture
                                     size={80}
@@ -41,9 +44,15 @@ const BlogList = ({ blogs }) => {
                                 </div>
                             </div>
 
-                            <div className="w-[40%] space-y-5">
+                            <div className={`w-[40%] space-y-5 ${blog.Images && blog.Images.length > 0 ? "w-[40%]":"w-[80%]"}`}>
                                 <h2 className="  sm:text-4xl text-2xl text-text-color font-sans font-black">{blog.Blog.title.substring(0, 30)}...</h2>
-                                <p className="text-gray-600 ">{blog.Blog.body.substring(0, 200)}...<Link to={`/${blog.Blog.id}`} className="text-1.5 hover:text-blue-600 hover:underline">Read more </Link></p>
+                                <p className="text-gray-600 ">{blog.Blog.body.substring(0, 200)}...<Link to={`/${blog.Blog.id}`} className="font-black tracking-wide text-black text-1.5 hover:text-blue-600 hover:underline">Read more </Link></p>
+                                {/* Delete button */}
+                            {/* {userData && userData.id === blog.Blog.owner_id && (
+                                <button onClick={() => onDelete(blog.Blog.id)} className=" text-red-500 hover:underline">
+                                    Delete
+                                </button>
+                            )} */}
                                 <div className="flex flex-row gap-5 items-center">
                                     {/* follow */}
                                     <span className="relative cursor-pointer"
@@ -92,8 +101,8 @@ const BlogList = ({ blogs }) => {
                                 </div>
 
                             </div>
-                            <div >
-                                <img src="https://via.placeholder.com/150" alt="" className=" bg-gray-400 w-full h-56 rounded-lg" />
+                            <div className={`${blog.Images && blog.Images.length > 0 ? "block":"hidden"}`}>
+                                {blog.Images && blog.Images.length > 0 ? (  <img src={blog.Images[0].filename} alt="" className=" bg-gray-400 w-52 h-44 " />):(<p></p>)}
                             </div>
                         </div>
                     
