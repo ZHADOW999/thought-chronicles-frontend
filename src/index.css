@@ -73,3 +73,10 @@ body{
     @apply ring-0 ring-black ring-transparent ;
   }
 }
+
+.blog-content img {
+  max-width: 100%; /* Ensures responsiveness */
+  height: auto;    /* Maintains aspect ratio */
+  max-height: 500px; /* Limits the image height */
+  object-fit: contain; /* Ensures the image doesn't get distorted */
+}

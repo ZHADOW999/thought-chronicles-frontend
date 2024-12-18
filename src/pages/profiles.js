@@ -85,41 +85,42 @@ const Profile = () => {
         }
     };
     return (
-        <main className='flex flex-row sm:mt-28 mt-20 sm:w-[95%] w-[90%] m-auto pb-10 justify-between items-start'>
+        <main className=' '>
             {loading && <div className="text-5xl text-center uppercase">Loading...</div>}
             {error && <div className=" text-4xl uppercase mt-40 w-[80%] m-auto flex flex-col gap-5 justify-center items-center">{error}</div>}
 
 
             {/* <h1>Upload Profile Image</h1> */}
-           <div className='flex flex-col  gap-10'>
-                {userId && <ProfilePicture size={250} userId={userId} fallbackImage="https://via.placeholder.com/150" />}
-                
-                {userData && <div>
-                    <h1 className='text-7 font-black'>{userData.author}</h1>
-                    {/* <p>{data.email}</p> */}
-                    {/* <img src={data.profile_picture} alt={data.name} /> */}
-                    <div>0 following</div>
-                    <div>0 follower</div>
-                    <div>{blogCount} blogs</div>
-                </div>}
-           </div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='pfp'>change Profile Picture</label>
-                <input className="hidden" type="file" id="pfp" accept="image/*" onChange={handleImageChange} />
-                <button type="submit">Upload</button> 
-            </form> 
-            {/* {message && <p>{message}</p>} */}
-            <div className='flex flex-col  w-[70%]'>
-                <h2 className='text-7 font-bold'>History</h2>
-                {blogData && <BlogList blogs={blogData} userId={userId} />}
-            </div>
-            <SpeedDialBtn/>
-                    </main>
+           <div className='flex flex-row sm:mt-28 mt-20 sm:w-[95%] w-[90%] m-auto pb-10 justify-between items-start'>
+               <div className='flex flex-col  gap-10'>
+                    {userId && <ProfilePicture size={250} userId={userId} fallbackImage="https://via.placeholder.com/150" />}
+                    
+                    {userData && <div>
+                        <h1 className='text-7 font-black'>{userData.author}</h1>
+                        {/* <p>{data.email}</p> */}
+                        {/* <img src={data.profile_picture} alt={data.name} /> */}
+                        <div>0 following</div>
+                        <div>0 follower</div>
+                        <div>{blogCount} blogs</div>
+                    </div>}
+               </div>
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor='pfp'>change Profile Picture</label>
+                    <input className="hidden" type="file" id="pfp" accept="image/*" onChange={handleImageChange} />
+                    <button type="submit">Upload</button> 
+                </form> 
+                {/* {message && <p>{message}</p>} */}
+                <div className='flex flex-col  w-[70%]'>
+                    <h2 className='text-7 font-bold'>History</h2>
+                    {blogData && <BlogList blogs={blogData} userId={userId} />}
+                </div>
+                <SpeedDialBtn/>
+               
+           </div>         </main>
     );
 };
 
 export default Profile;
-
 
 
 // import React, { useState,useEffect } from 'react';

@@ -5,7 +5,8 @@ import NewBlog from "./pages/newBlogs";
 import AuthForm from "./login/AuthForm";
 import BlogDetails from "./components/blogDetails";
 import Profile from "./pages/profiles";
-
+import BlogCreateSection from "./components/BlogCreateSection";
+import EditBlog from "./components/edditBlog";
 
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
         <Route path="/newblog" element={<MainLayout><NewBlog/></MainLayout>}/>
         <Route path="/:id" element={<MainLayout><BlogDetails/></MainLayout>}/>
         <Route path="/profile/:userId" element={<MainLayout><Profile /></MainLayout>}/>
+        <Route path="/create" element={<MainLayout><BlogCreateSection /></MainLayout>}/>
+        <Route path="/edit/:id" element={<MainLayout><EditBlog /></MainLayout>}/>
       </Routes>
     </Router>
   );
