@@ -5,7 +5,8 @@ import bg from "../images/logo-1-bg.png";
 import { useState, useEffect,useCallback } from "react";
 import "../index.css";
 import ProfilePicture from "./profilePic";
-import axios from "axios";
+// import axios from "axios";
+
 
 
 const Navbar = ({ userId }) => {
@@ -23,8 +24,8 @@ const Navbar = ({ userId }) => {
     const handleLogout = async () => {
         try {
           // Send logout request to backend
-            await axios.post(
-            "http://127.0.0.1:4000/api/logout",
+            await api.post(
+            "/api/logout",
             {},
             {
               withCredentials: true, // Ensure cookies are included in the request

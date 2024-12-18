@@ -1,23 +1,23 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import api from '../api/axiosConfig'; 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { useDropzone } from 'react-dropzone'; // Import React Dropzone
+// import { useDropzone } from 'react-dropzone'; // Import React Dropzone
 import 'react-quill/dist/quill.snow.css';
 const forbiddenWords = [
-    // Add your forbidden words list
+    // Add your forbidden words list 
     
 ];
 
 const BlogCreate = () => {
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
-    const [images, setImages] = useState([]);
+    // const [images, setImages] = useState([]);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
-    const [imagePreviews, setImagePreviews] = useState([]);
-    const fileInputRef = useRef(null);
+    // const [imagePreviews, setImagePreviews] = useState([]);
+    // const fileInputRef = useRef(null);
     const [isPending, setIsPending] = useState(null);
     const navigate = useNavigate();
 
@@ -35,22 +35,22 @@ const BlogCreate = () => {
     }, [isPostDisabled]);
 
     // Drag and drop handler using react-dropzone
-    const onDrop = (acceptedFiles) => {
-        const previews = acceptedFiles.map((file) => URL.createObjectURL(file));
-        setImagePreviews((prev) => [...prev, ...previews]);
-        setImages((prev) => [...prev, ...acceptedFiles]);
-    };
+    // const onDrop = (acceptedFiles) => {
+    //     const previews = acceptedFiles.map((file) => URL.createObjectURL(file));
+    //     setImagePreviews((prev) => [...prev, ...previews]);
+    //     setImages((prev) => [...prev, ...acceptedFiles]);
+    // };
 
-    const { getRootProps, getInputProps } = useDropzone({
-        onDrop,
-        accept: 'image/*',
-        multiple: true
-    });
+    // const { getRootProps, getInputProps } = useDropzone({
+    //     onDrop,
+    //     accept: 'image/*',
+    //     multiple: true
+    // });
 
-    const handleRemoveImage = (index) => {
-        setImagePreviews((prev) => prev.filter((_, i) => i !== index));
-        setImages((prev) => prev.filter((_, i) => i !== index));
-    };
+    // const handleRemoveImage = (index) => {
+    //     setImagePreviews((prev) => prev.filter((_, i) => i !== index));
+    //     setImages((prev) => prev.filter((_, i) => i !== index));
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -58,9 +58,9 @@ const BlogCreate = () => {
         post.append("title", title);
         post.append("body", body); 
 
-        if (images.length > 0) {
-            images.forEach((file) => post.append("images", file));
-        }
+        // if (images.length > 0) {
+        //     images.forEach((file) => post.append("images", file));
+        // }
 
         setIsPending(true);
 
@@ -72,7 +72,7 @@ const BlogCreate = () => {
                 },
                 withCredentials: true,
             });
-
+            setIsSubmitting(true)
             setIsPending(false);
             navigate("/");
             console.log("Blog posted successfully");
@@ -101,6 +101,7 @@ const BlogCreate = () => {
     
       ['clean']                                         // remove formatting button
     ];
+
     
       const modules = {
         // Equivalent to { toolbar: { container: '#toolbar' }}
@@ -108,8 +109,47 @@ const BlogCreate = () => {
       }
     
 
+      useEffect(() => {
+        const toolbar = document.querySelector('.ql-toolbar');
+        if (toolbar) {
+          const tooltips = {
+            'ql-bold': 'Bold',
+            'ql-italic': 'Italic',
+            'ql-underline': 'Underline',
+            'ql-strike': 'Strikethrough',
+            'ql-code-block': 'Code Block',
+            'ql-link': 'Insert Link',
+            'ql-image': 'Insert Image',
+            'ql-video': 'Insert Video',
+            'ql-header': 'Heading',
+            'ql-list': 'List',
+            'ql-indent': 'Indent',
+            'ql-direction': 'Text Direction',
+            'ql-size': 'Font Size',
+            'ql-color': 'Text Color',
+            'ql-background': 'Background Color',
+            'ql-font': 'Font Family',
+            'ql-align': 'Text Align',
+            'ql-list-type': 'List Type',
+            'ql-script': 'Script',
+            'ql-blockquote': 'Blockquote',
+            'ql-code': 'Code',
+            'ql-formula': 'Formula',
+            'ql-clean': 'Remove Formatting',
+            
+          };
+    
+          Object.entries(tooltips).forEach(([className, tooltip]) => {
+            const button = toolbar.querySelector(`.${className}`);
+            if (button) {
+              button.setAttribute('data-tooltip', tooltip);
+            }
+          });
+        }
+      }, []);
+
     return (
-        <div className="container mx-auto p-6 mt-20 w-[80%]">
+        <div className="container mx-auto p-6 mt-20 w-[95%]">
            <img
                     className="mx-auto w-[70vw] h-[250px] rounded-lg object-cover mb-6"
                     src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
@@ -125,7 +165,7 @@ const BlogCreate = () => {
                             placeholder="Blog Title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
-                            className="w-full p-4 border-2 bg-bg-color-light1 border-gray-400 rounded-lg shadow-md focus:outline-none focus:border-none focus:ring-2 focus:ring-black"
+                            className="h-auto w-full p-4 border-2 bg-bg-color-light1 border-gray-400 rounded-lg shadow-md focus:outline-none focus:border-none focus:ring-2 focus:ring-black"
                             required
                         />
                     </div>
@@ -141,7 +181,7 @@ const BlogCreate = () => {
                         />
                     </div>
 
-                    <div>
+                    {/* <div>
                         <label className="block font-semibold text-gray-700 mb-2 mt-20">Upload Images:</label>
                         <div {...getRootProps()} className="cursor-pointer w-full border-2 border-gray-300 p-6 text-center rounded-lg hover:bg-gray-200">
                             <input {...getInputProps()} />
@@ -161,9 +201,9 @@ const BlogCreate = () => {
                                 </div>
                             ))}
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="flex justify-center">
+                    <div className="flex justify-center pt-20 ">
                         <button
                             type="submit"
                             disabled={isSubmitting || isPostDisabled}

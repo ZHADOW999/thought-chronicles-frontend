@@ -6,7 +6,7 @@ import AuthForm from "./login/AuthForm";
 import BlogDetails from "./components/blogDetails";
 import Profile from "./pages/profiles";
 import BlogCreateSection from "./components/BlogCreateSection";
-import EditBlog from "./components/edditBlog";
+import EditBlog from "./components/editBlog";
 
 
 function App() {

@@ -10,7 +10,7 @@ const BlogDetails = () => {
 
     const { id } = useParams();
     const { data: blog, loading, error } = UseFetch(`http://127.0.0.1:4000/api/blogs/${id}`);
-    const { userData: userData } = UseFetchLoggedUser("/api/users/me");
+    const { userData } = UseFetchLoggedUser("/api/users/me");
 
     const history = useNavigate();
 
@@ -41,7 +41,7 @@ const BlogDetails = () => {
                 </div>
             )}
             {blog && (
-                <article className="mt-32 w-[80%] m-auto flex flex-col gap-5 justify-center ">
+                <article className="mt-32 w-[80%] items-center m-auto flex flex-col gap-5 justify-center ">
                     <h2 className="text-4xl font-black">{blog.Blog.title}</h2>
                     <div
                         className="max-w-full prose blog-content"
@@ -61,7 +61,7 @@ const BlogDetails = () => {
                         }}
                     ></div>
                     <p className="text-[14px]">Written by: {blog.Blog.owner.author}</p>
-                    {blog.Images && blog.Images.length > 0 ? (
+                    {/* {blog.Images && blog.Images.length > 0 ? (
                         blog.Images.map((image, index) => (
                             <img
                                 key={index}
@@ -72,7 +72,7 @@ const BlogDetails = () => {
                         ))
                     ) : (
                         <p></p>
-                    )}
+                    )} */}
                     {userData && userData.id === blog.Blog.owner_id && (
                         <div>
                             <button

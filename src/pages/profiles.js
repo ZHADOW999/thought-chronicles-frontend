@@ -13,7 +13,7 @@ import UseFetchLoggedUser from '../components/useFetchLoggedUser';
 const Profile = () => {
     const { userId } = useParams();
     
-    const [image, setImage] = useState(null);
+    // const [image, setImage] = useState(null);
     // const [ownerId,setOwnerId] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -21,7 +21,7 @@ const Profile = () => {
     const [blogData, setBlogData] = useState([]);
     
     // const [message, setMessage] = useState('');
-    const { userData: userData } = UseFetchLoggedUser("/api/users/me");
+    const {  userData } = UseFetchLoggedUser("/api/users/me");
 
 
     
@@ -59,31 +59,31 @@ const Profile = () => {
     }, []);
     const blogCount = blogData.length;
 
-    const handleImageChange = (event) => {
-        setImage(event.target.files[0]);
-    };
+    // const handleImageChange = (event) => {
+    //     setImage(event.target.files[0]);
+    // };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        // Append your file or data to formData
-        formData.append('file', image); // Assuming selectedFile is your file input
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const formData = new FormData();
+    //     // Append your file or data to formData
+    //     formData.append('file', image); // Assuming selectedFile is your file input
  
-        try {
-            const response = await api.post(`/api/users/${userId}/upload-profile-picture`, formData, {
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`, // Include the token
-                    'Content-Type': 'multipart/form-data', // Ensure the content type is set correctly
-                },
-            });
-            console.log('Upload successful:', response.data);
+    //     try {
+    //         const response = await api.post(`/api/users/${userId}/upload-profile-picture`, formData, {
+    //             headers: {
+    //                 'Authorization': `Bearer ${localStorage.getItem('authToken')}`, // Include the token
+    //                 'Content-Type': 'multipart/form-data', // Ensure the content type is set correctly
+    //             },
+    //         });
+    //         console.log('Upload successful:', response.data);
             
-            // Update the image state with the new image URL
-            setImage(URL.createObjectURL(image)); // Create a local URL for the uploaded image
-        } catch (error) {
-            console.error('Error uploading file:', error);
-        }
-    };
+    //         // Update the image state with the new image URL
+    //         setImage(URL.createObjectURL(image)); // Create a local URL for the uploaded image
+    //     } catch (error) {
+    //         console.error('Error uploading file:', error);
+    //     }
+    // };
     return (
         <main className=' '>
             {loading && <div className="text-5xl text-center uppercase">Loading...</div>}
@@ -104,11 +104,11 @@ const Profile = () => {
                         <div>{blogCount} blogs</div>
                     </div>}
                </div>
-                <form onSubmit={handleSubmit}>
+                {/* <form onSubmit={handleSubmit}>
                     <label htmlFor='pfp'>change Profile Picture</label>
                     <input className="hidden" type="file" id="pfp" accept="image/*" onChange={handleImageChange} />
                     <button type="submit">Upload</button> 
-                </form> 
+                </form>  */}
                 {/* {message && <p>{message}</p>} */}
                 <div className='flex flex-col  w-[70%]'>
                     <h2 className='text-7 font-bold'>History</h2>
