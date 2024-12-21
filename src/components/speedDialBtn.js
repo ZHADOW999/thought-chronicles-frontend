@@ -12,7 +12,7 @@ const SpeedDialBtn = () => {
     return ( 
         
 
-<div data-dial-init className="fixed end-6 bottom-6 group">
+<div data-dial-init className="fixed end-6 bottom-20 md:bottom-6 group">
     <div id="speed-dial-menu-default" className="flex flex-col items-center hidden mb-4 space-y-2">
         
         <Link to="/stories">

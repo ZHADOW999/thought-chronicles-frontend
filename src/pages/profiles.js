@@ -7,7 +7,7 @@ import ProfilePicture from '../components/profilePic';
 import BlogList from '../components/blogList';
 import SpeedDialBtn from "../components/speedDialBtn";
 import UseFetchLoggedUser from '../components/useFetchLoggedUser';
-
+import MobileNavBar from '../components/MobileNavBar';
 
 
 const Profile = () => {
@@ -91,9 +91,9 @@ const Profile = () => {
 
 
             {/* <h1>Upload Profile Image</h1> */}
-           <div className='flex flex-row sm:mt-28 mt-20 sm:w-[95%] w-[90%] m-auto pb-10 justify-between items-start'>
+           <div className='flex flex-col lg:flex-row sm:mt-28 mt-20 sm:w-[95%] w-[90%] m-auto pb-10 justify-between items-start'>
                <div className='flex flex-col  gap-10'>
-                    {userId && <ProfilePicture size={250} userId={userId} fallbackImage="https://via.placeholder.com/150" />}
+                    {userId && <ProfilePicture size={250} userId={userId} />}
                     
                     {userData && <div>
                         <h1 className='text-7 font-black'>{userData.author}</h1>
@@ -110,13 +110,15 @@ const Profile = () => {
                     <button type="submit">Upload</button> 
                 </form>  */}
                 {/* {message && <p>{message}</p>} */}
-                <div className='flex flex-col  w-[70%]'>
+                <div className='flex flex-col w-full mt-10 lg:mt-0 lg:w-[70%]'>
                     <h2 className='text-7 font-bold'>History</h2>
                     {blogData && <BlogList blogs={blogData} userId={userId} />}
                 </div>
                 <SpeedDialBtn/>
-               
-           </div>         </main>
+                
+           </div>         
+           <MobileNavBar/>
+        </main>
     );
 };
 

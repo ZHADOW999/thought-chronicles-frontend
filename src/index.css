@@ -127,3 +127,21 @@ body{
   border-style: solid;
   border-color: #333 transparent transparent transparent;
 }
+.profile-pic-responsive {
+  width: var(--default-size);
+  height: var(--default-size);
+}
+
+@media (max-width: 768px) {
+  .profile-pic-responsive {
+    width: calc(var(--default-size) * 0.8);
+    height: calc(var(--default-size) * 0.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-pic-responsive {
+    width: calc(var(--default-size) * 0.6);
+    height: calc(var(--default-size) * 0.6);
+  }
+}

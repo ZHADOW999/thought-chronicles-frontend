@@ -1,27 +1,17 @@
 import Navbar from "./navBar";
-import { useEffect, useState } from "react";
-import api from "../api/axiosConfig";
+// import {useState } from "react";
+// import api from "../api/axiosConfig";
+import UseFetchLoggedUser from "./useFetchLoggedUser";
 
 const MainLayout = ({ children }) => {
-    const [ownerId, setOwnerId] = useState(null);
+    const {userData} = UseFetchLoggedUser("/api/users/me");
+    // const [ownerId, setOwnerId] = useState(null);
+    
 
-
-    useEffect(() => {
-        const fetchOwnerId = async () => {
-            try {
-                const response = await api.get('/api/users/me'); // Use Axios to fetch user data
-                setOwnerId(response.data.id); // Assuming the user ID is in the response
-            } catch (err) {
-                console.error(err);
-            }
-        };
-
-        fetchOwnerId();
-    }, []);
 
     return (
         <>
-            <Navbar userId={ownerId} />
+            {userData && <Navbar userId={userData ? userData.id : null} />}
             {children}
         </>
     );
