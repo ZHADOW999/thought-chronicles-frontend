@@ -5,6 +5,7 @@ import UseFetch from "../components/useFetch";
 import SearchBar from "../components/Search";
 import SpeedDialBtn from "../components/speedDialBtn";
 import MobileNavBar from "../components/MobileNavBar";
+import CardSkeleton from "../components/cardSkeleton";
 const Home = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -29,16 +30,23 @@ const Home = () => {
     };
 
     return (
-        <main className="">
-            {error && <p className="text-5xl text-center uppercase">{error}</p>}
-            {loading && <div className="text-5xl text-center uppercase">Loading...</div>}
-            <section className="mt-20 md:mt-28 md:w-[80%] w-[95%] m-auto pb-10">
+        <>
+            {/* {error && <p className="text-5xl text-center uppercase">{error}</p>} */}
+            
+            <section className="sm:pt-28 pt-20 md:w-[80%] w-[95%] m-auto pb-10">
+            
                 <div className="hidden md:block">
                     <SearchBar onSearch={handleSearch} width={560} height={56} showwProfilePic={false}
                     />
                 </div>
+                {loading && <div className="flex flex-col gap-3">
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+                <CardSkeleton/>
+            </div>}
                 {blogs && blogs.length > 0 ? (
-                    <BlogList blogs={blogs} />
+                    <BlogList blogs={blogs} isLoading={loading} error={error}/>
                 ) : (
                     !loading && <p className="text-center text-2xl mt-10">No Looks like we've hit a blank page in the storybook. No blogs match your search—try a different tale!</p>
                 )}
@@ -46,7 +54,7 @@ const Home = () => {
                 
             </section>
             < MobileNavBar/>
-        </main>
+        </>
     );
 };
 

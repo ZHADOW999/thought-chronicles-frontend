@@ -7,7 +7,7 @@ import React,{ useEffect } from "react";
   const toolbarOptions = [
     ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
     ['blockquote', 'code-block'],
-    ['link', 'image', 'video', 'formula'],
+    ['link', 'image', 'formula'],
   
     [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
     [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
@@ -44,7 +44,6 @@ const BlogCreateForm = ({onSubmit,Blogtitle,BlogBody,title,body,isSubmitting,hea
             'ql-code-block': 'Code Block',
             'ql-link': 'Insert Link',
             'ql-image': 'Insert Image',
-            'ql-video': 'Insert Video',
             'ql-header': 'Heading',
             'ql-list': 'List',
             'ql-indent': 'Indent',
@@ -72,7 +71,7 @@ const BlogCreateForm = ({onSubmit,Blogtitle,BlogBody,title,body,isSubmitting,hea
         }
       }, []);
     return ( 
-        <div className="w-[95%] m-auto mt-32">
+        <div className="w-[95%] m-auto pt-32">
             <img
                     className="mx-auto w-[100vw] h-[250px] rounded-lg object-cover mb-6"
                     src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"

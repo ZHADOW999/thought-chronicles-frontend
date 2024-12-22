@@ -134,8 +134,8 @@ body{
 
 @media (max-width: 768px) {
   .profile-pic-responsive {
-    width: calc(var(--default-size) * 0.8);
-    height: calc(var(--default-size) * 0.8);
+    width: calc(var(--default-size) * 0.6);
+    height: calc(var(--default-size) * 0.6);
   }
 }
 
@@ -144,4 +144,8 @@ body{
     width: calc(var(--default-size) * 0.6);
     height: calc(var(--default-size) * 0.6);
   }
+}
+
+.ptag{
+  margin-top: 0.5rem !important;
 }

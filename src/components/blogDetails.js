@@ -4,6 +4,7 @@ import { useParams, useNavigate,Link } from "react-router-dom";
 import { useState } from "react";
 import UseFetchLoggedUser from "./useFetchLoggedUser";
 import DOMPurify from "dompurify";
+import ProfilePicture from "./profilePic";
 
 const BlogDetails = () => {
     const [deletePopUp, setDeletePopUp] = useState(false);
@@ -28,6 +29,13 @@ const BlogDetails = () => {
         }
     };
 
+    const formatDate = (dateString) => {
+        const options = { month: "long", day: "numeric", year: "numeric" };
+        const date = new Date(dateString);
+        const formattedDate = date.toLocaleDateString("en-US", options).toLowerCase();
+        return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+    };
+
     return (
         <div>
             {loading && (
@@ -41,8 +49,21 @@ const BlogDetails = () => {
                 </div>
             )}
             {blog && (
-                <article className="mt-32 w-[80%] items-center m-auto flex flex-col gap-5 justify-center ">
-                    <h2 className="text-4xl font-black">{blog.Blog.title}</h2>
+                <article className="mt-32 w-[70%]  m-auto flex flex-col gap-5 justify-center ">
+                    <h2 className="text-4xl ">{blog.Blog.title}</h2>
+                    <div className="w-full mb-2 md:mb-0 flex flex-row  justify-start self-start h-auto">
+                                <Link to={`/profile/${blog.Blog.owner_id}`}>
+                                    <ProfilePicture
+                                        size={30}
+                                        userId={blog.Blog.owner_id}
+                                        altText={`User ${blog.Blog.owner_id}'s Profile Picture`}
+                                    />
+                                </Link>
+                                <div className="w-full ml-5 flex-row  gap-10 flex  md:mt-0">
+                                    <Link to={`/profile/${blog.Blog.owner_id}`} className="cursor-pointer hover:underline font-semibold">{blog.Blog.owner.author}</Link>
+                                    <p className= "opacity-50 text-1 flex justify-center items-center">{formatDate(blog.Blog.created_at)}</p>
+                                </div>
+                            </div>
                     <div
                         className="max-w-full prose blog-content"
                         dangerouslySetInnerHTML={{
@@ -60,7 +81,7 @@ const BlogDetails = () => {
                             }),
                         }}
                     ></div>
-                    <p className="text-[14px]">Written by: {blog.Blog.owner.author}</p>
+                    
                     {userData && userData.id === blog.Blog.owner_id && (
                         <div>
                             <button

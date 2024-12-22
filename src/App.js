@@ -7,6 +7,8 @@ import BlogDetails from "./components/blogDetails";
 import Profile from "./pages/profiles";
 import BlogCreateSection from "./components/BlogCreateSection";
 import EditBlog from "./components/editBlog";
+import Stories from "./pages/stories"; 
+import Library from "./pages/libraries";
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path="/profile/:userId" element={<MainLayout><Profile /></MainLayout>}/>
         <Route path="/create" element={<MainLayout><BlogCreateSection /></MainLayout>}/>
         <Route path="/edit/:id" element={<MainLayout><EditBlog /></MainLayout>}/>
+        <Route path="/stories" element={<MainLayout><Stories /></MainLayout>}/>
+        <Route path="/library" element={<MainLayout><Library /></MainLayout>}/>
       </Routes>
     </Router>
   );

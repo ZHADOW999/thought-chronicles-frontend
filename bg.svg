@@ -1,0 +1,27 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 400 400"
+  width="100%"
+  height="100%"
+  preserveAspectRatio="none"
+>
+  <rect width="400" height="400" fill="#F4F0EC" />
+  <path
+    d="M20 40 Q30 30, 40 50 T70 60 Q90 80, 110 70 T160 90 Q200 130, 240 110 T350 160"
+    stroke="#e3ddd6"
+    stroke-width="1"
+    fill="none"
+  />
+  <path
+    d="M10 110 Q50 130, 90 120 T130 160 Q160 190, 190 150 T320 180"
+    stroke="#e3ddd6"
+    stroke-width="1"
+    fill="none"
+  />
+  <path
+    d="M40 230 Q70 210, 100 240 T140 250 Q180 280, 220 240 T350 270"
+    stroke="#e3ddd6"
+    stroke-width="1"
+    fill="none"
+  />
+</svg>

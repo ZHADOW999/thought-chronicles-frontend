@@ -45,7 +45,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchUserBlog = async () => {
             try {
-                const response = await api.get('/api/blogs/me'); // Use Axios to fetch user data
+                const response = await api.get(`/api/users/${userId}`); // Use Axios to fetch user data
                 setBlogData(response.data); // Assuming the user ID is in the response
                 console.log(response.data);
             } catch (err) {
@@ -56,7 +56,7 @@ const Profile = () => {
         };
 
         fetchUserBlog();
-    }, []);
+    }, [userId]);
     const blogCount = blogData.length;
 
     // const handleImageChange = (event) => {
@@ -85,22 +85,24 @@ const Profile = () => {
     //     }
     // };
     return (
-        <main className=' '>
+        <>
             {loading && <div className="text-5xl text-center uppercase">Loading...</div>}
             {error && <div className=" text-4xl uppercase mt-40 w-[80%] m-auto flex flex-col gap-5 justify-center items-center">{error}</div>}
 
 
             {/* <h1>Upload Profile Image</h1> */}
-           <div className='flex flex-col lg:flex-row sm:mt-28 mt-20 sm:w-[95%] w-[90%] m-auto pb-10 justify-between items-start'>
+           <div className='flex flex-col lg:flex-row  sm:pt-28 pt-20 sm:w-[95%] w-[90%] m-auto pb-10 justify-between mb-20'>
                <div className='flex flex-col  gap-10'>
                     {userId && <ProfilePicture size={250} userId={userId} />}
                     
                     {userData && <div>
-                        <h1 className='text-7 font-black'>{userData.author}</h1>
-                        {/* <p>{data.email}</p> */}
-                        {/* <img src={data.profile_picture} alt={data.name} /> */}
+                        {blogData.length > 0 && blogData[0].Blog ? ( // Check if blogData has items and the first item has Blog
+                        <h1 className='text-7 font-black'>{blogData[0].Blog.owner.author}</h1>
+    ) : null}
+                        {/* */}
                         <div>0 following</div>
                         <div>0 follower</div>
+                        {/* {userData.id !== userId && <p >hey</p>} */}
                         <div>{blogCount} blogs</div>
                     </div>}
                </div>
@@ -118,7 +120,7 @@ const Profile = () => {
                 
            </div>         
            <MobileNavBar/>
-        </main>
+        </>
     );
 };
 

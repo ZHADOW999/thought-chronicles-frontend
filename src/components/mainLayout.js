@@ -12,7 +12,7 @@ const MainLayout = ({ children }) => {
     return (
         <>
             {userData && <Navbar userId={userData ? userData.id : null} />}
-            {children}
+            <main className="bg-bg-color-light1">{children}</main>
         </>
     );
 }

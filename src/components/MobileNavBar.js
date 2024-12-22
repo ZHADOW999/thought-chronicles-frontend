@@ -31,7 +31,7 @@ const MobileNavBar = () => {
                             <p className="text-1">Home</p>
                         </IconButton>
                     </Link>
-                    <Link to="/bookmarks">
+                    <Link to="/library">
                         <IconButton
                             className="flex-shrink-0 p-2 text-white flex flex-col"
                             sx={{
@@ -48,13 +48,15 @@ const MobileNavBar = () => {
                             <p className="text-1">Bookmarks</p>
                         </IconButton>
                     </Link>
-                    <Link to="/stories" className="items-center p-2 flex-shrink-0 flex flex-col">
-                        <MdHistoryEdu
-                            className="w-5 h-5 sm:w-7 sm:h-7"
-                        />
-                        <p className="text-1">Stories</p>
+                    <Link to="/stories" >
+                        <IconButton className="items-center p-2 flex-shrink-0 flex flex-col" sx={{color:"black"}}>
+                            <MdHistoryEdu
+                                className="w-5 h-5 sm:w-7 sm:h-7"
+                            />
+                            <p className="text-1">Stories</p>
+                        </IconButton>
                     </Link>
-                    <Link to="/notifications">
+                    <Link to="">
                         <IconButton
                             className="flex-shrink-0 p-2 text-white flex flex-col"
                             sx={{
