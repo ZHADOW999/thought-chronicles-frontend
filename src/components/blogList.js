@@ -4,6 +4,7 @@ import ProfilePicture from "./profilePic";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faHeart } from "@fortawesome/free-regular-svg-icons";
 import DOMPurify from "dompurify";
+import CardSkeleton from "./cardSkeleton";
 
 
 const BlogList = ({ blogs, isLoading,error }) => {
@@ -16,7 +17,7 @@ const BlogList = ({ blogs, isLoading,error }) => {
         : [];
 
     const formatDate = (dateString) => {
-        const options = { month: "short", day: "numeric", year: "numeric" };
+        const options = { month: "long", day: "numeric", year: "numeric" };
         const date = new Date(dateString);
         const formattedDate = date.toLocaleDateString("en-US", options).toLowerCase();
         return formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
@@ -30,8 +31,18 @@ const BlogList = ({ blogs, isLoading,error }) => {
         return { images, sanitizedContent: doc.body.innerHTML };
     };
 
+    // if(isLoading){
+    //     <CardSkeleton/>
+    // }
+
     return (
-        <div>
+        <>
+            {isLoading ? <div>
+                {[...Array(5)].map((_, index) => (
+                    <CardSkeleton key={index} />
+                ))}
+            </div>:''}
+
             {sortedBlogs.map((blog) => {
                 const { images, sanitizedContent } = extractImages(blog.Blog.body);
                 const shortContent = DOMPurify.sanitize(sanitizedContent).slice(0, 70); // Limit sanitized content to 70 chars
@@ -149,7 +160,7 @@ const BlogList = ({ blogs, isLoading,error }) => {
                     </div>
                 );
             })}
-        </div>
+        </>
     );
 };
 

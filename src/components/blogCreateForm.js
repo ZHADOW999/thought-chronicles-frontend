@@ -71,6 +71,56 @@ const BlogCreateForm = ({onSubmit,Blogtitle,BlogBody,title,body,isSubmitting,hea
         }
       }, []);
     return ( 
+      // <div className="w-[100%] m-auto pt-32 pb-10">
+      //       <img
+      //               className="mx-auto w-[90vw] h-[250px] rounded-lg object-cover mb-6"
+      //               src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+      //               alt="Blog Cover"
+      //           />
+      //       <h1 className="text-3xl font-bold mb-5">{header}</h1>
+      //       <form onSubmit={onSubmit} className="flex flex-col gap-4">
+      //           {/* Title Input */}
+      //           <div>
+      //               {/* <label htmlFor="title" className="block font-bold mb-2">Title</label> */}
+      //               <input
+      //                   id="title"
+      //                   type="text"
+      //                   value={title}
+      //                   placeholder="Title"
+      //                   onChange={Blogtitle}
+      //                   className="text-6 h-auto w-full p-4 border-none bg-bg-color-light1  border-gray-400 rounded-lg  focus:outline-none focus:border-none focus:ring-0 focus:ring-black"
+      //                   required
+      //               />
+      //           </div>
+
+
+      //           {/* React Quill Editor for Body */}
+      //           <div>
+      //               <label htmlFor="body" className=" sr-only block font-bold mb-2">Body</label>
+      //               <ReactQuill
+      //               modules={modules}
+      //                   id="body"
+      //                   value={body}
+      //                   placeholder="Write your blog content..."
+      //                   onChange={BlogBody} // Update state when editor content changes
+      //                   className="border-none border-gray-300 rounded w-full h-screen text-2"
+      //                   required
+      //               />
+      //           </div>
+
+      //           {/* Submit Button */}
+      //           <div className="flex justify-center pt-20 ">
+      //                   <button
+      //                       type="submit"
+      //                       disabled={isSubmitting}
+      //                       className={`px-6 py-3 w-full sm:w-auto text-white bg-bg-color-dark hover:bg-text-color  rounded-lg shadow-md ${isSubmitting ? 'opacity-50 cursor-not-allowed' : 'hover:bg-text-color'}`}
+      //                   >
+      //                       {isSubmitting ? SubmittingBlogText : isSubmittingBlogText}
+      //                   </button>
+      //               </div>
+      //       </form>
+      //   </div>
+
         <div className="w-[95%] m-auto pt-32">
             <img
                     className="mx-auto w-[100vw] h-[250px] rounded-lg object-cover mb-6"

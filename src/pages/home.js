@@ -39,11 +39,10 @@ const Home = () => {
                     <SearchBar onSearch={handleSearch} width={560} height={56} showwProfilePic={false}
                     />
                 </div>
-                {loading && <div className="flex flex-col gap-3">
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
-                <CardSkeleton/>
+                {loading && <div>
+                {[...Array(5)].map((_, index) => (
+                    <CardSkeleton key={index} />
+                ))}
             </div>}
                 {blogs && blogs.length > 0 ? (
                     <BlogList blogs={blogs} isLoading={loading} error={error}/>

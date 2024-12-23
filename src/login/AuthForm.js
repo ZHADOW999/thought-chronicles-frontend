@@ -77,7 +77,7 @@ const AuthForm = () => {
   };
 
   return (
-    <div className='h-screen w-screen flex justify-center items-center'>
+    <div className='h-screen w-screen flex justify-center items-center bg-bg-color-light1'>
       <div className="wrapper ">
         <div className="title-text" style={titleStyle}>
           <div className="title login">Thought Chronicles</div>
