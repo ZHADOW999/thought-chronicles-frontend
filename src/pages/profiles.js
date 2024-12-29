@@ -8,6 +8,7 @@ import BlogList from '../components/blogList';
 import SpeedDialBtn from "../components/speedDialBtn";
 import UseFetchLoggedUser from '../components/useFetchLoggedUser';
 import MobileNavBar from '../components/MobileNavBar';
+import UseFetch from '../components/useFetch';
 
 
 
@@ -23,14 +24,15 @@ const Profile = () => {
     
     // const [message, setMessage] = useState('');
     const {  userData } = UseFetchLoggedUser("/api/users/me");
-
+    const {  data } = UseFetch(`http://127.0.0.1:4000/api/users/profiles/${userId}`);
+    
     
     
     useEffect(() => {
         const fetchUserBlog = async () => {
             setLoading(true);
             try {
-                const response = await api.get(`/api/users/${userId}`); // Use Axios to fetch user data
+                const response = await api.get(`/api/blogs/users/${userId}`); // Use Axios to fetch user data
                 setBlogData(response.data); // Assuming the user ID is in the response
                 // console.log(response.data);
             } catch (err) {
@@ -80,11 +82,12 @@ const Profile = () => {
                <div className='flex flex-row   gap-10 items-start justify-center'>
                     {userId && <ProfilePicture size={250} userId={userId} />}
                     
-                    {userData && <div>
-                        {blogData.length > 0 && blogData[0].Blog ? ( // Check if blogData has items and the first item has Blog
-                        <h1 className='text-7 font-black'>{blogData[0].Blog.owner.author}</h1>
-    ) : null}
-                        
+                    {userData && data && <div>
+                        <h1 className='text-7 font-black leading-tight'>{data.author}</h1>
+                        <p className='mb-2'>
+                            <div className='font-bold'>bio:</div>
+                            {data.bio}
+                        </p>
                         <div>0 following</div>
                         <div>0 followers</div>
                         {/* {userData.id !== userId && <p >hey</p>} */}
