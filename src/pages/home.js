@@ -47,7 +47,7 @@ const Home = () => {
                 {blogs && blogs.length > 0 ? (
                     <BlogList blogs={blogs} isLoading={loading} error={error}/>
                 ) : (
-                    !loading && <p className="text-center text-2xl mt-10">No Looks like we've hit a blank page in the storybook. No blogs match your search—try a different tale!</p>
+                    !loading && <p className="text-center  text-2xl mt-10">No Looks like we've hit a blank page in the storybook. No blogs match your search—try a different tale!</p>
                 )}
                 <SpeedDialBtn />
                 
