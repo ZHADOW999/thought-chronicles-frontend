@@ -1,5 +1,4 @@
 import React from "react";
-import svg from "../images/undraw_building-websites_k2zp.svg";
 
 const ComingSoon = () => {
   return (

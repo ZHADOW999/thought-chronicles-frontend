@@ -33,7 +33,7 @@ const Home = () => {
         <>
             {/* {error && <p className="text-5xl text-center uppercase">{error}</p>} */}
             
-            <section className="sm:pt-28 pt-20 md:w-[80%] w-[95%] m-auto pb-10">
+            <section className="sm:pt-28 pt-20 md:w-[80%] w-[100%] m-auto pb-20 md:pb-10">
             
                 <div className="hidden md:block">
                     <SearchBar onSearch={handleSearch} width={560} height={56} showwProfilePic={false}

@@ -1,5 +1,6 @@
 import React,{useEffect} from "react";
 import { Link } from "react-router-dom";
+// eslint-disable-next-line
 import { initFlowbite } from "flowbite";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";

@@ -2,7 +2,7 @@ import React from "react";
 
 const CardSkeleton = () => {
   return (
-    <div className="mt-10 animate-pulse p-4 rounded-lg shadow-md bg-white w-full flex  justify-between">
+    <div className="mt-5 animate-pulse p-4 rounded-lg shadow-md bg-white w-full flex  justify-between">
       {/* Profile Picture Placeholder */}
       <div className="w-[50%]">
           <div className="flex items-center mb-4">

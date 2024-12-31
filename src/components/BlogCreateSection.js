@@ -7,7 +7,7 @@ const BlogCreate = () => {
     const [title, setTitle] = useState("");
     const [body, setBody] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isPending, setIsPending] = useState(null);
+    const [ setIsPending] = useState(null);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {

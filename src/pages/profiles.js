@@ -9,6 +9,11 @@ import SpeedDialBtn from "../components/speedDialBtn";
 import UseFetchLoggedUser from '../components/useFetchLoggedUser';
 import MobileNavBar from '../components/MobileNavBar';
 import UseFetch from '../components/useFetch';
+import {faPencilSquare} from "@fortawesome/free-solid-svg-icons/faPencilSquare";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import EditProfileForm from './editProfileForm';
+import { Tooltip } from 'react-tippy';
+import 'react-tippy/dist/tippy.css';
 
 
 
@@ -21,11 +26,14 @@ const Profile = () => {
     const [error, setError] = useState(null);
     // const [data, setData] = useState(null);
     const [blogData, setBlogData] = useState([]);
+    // const [hoverData, setHoverData] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     
     // const [message, setMessage] = useState('');
     const {  userData } = UseFetchLoggedUser("/api/users/me");
     const {  data } = UseFetch(`http://127.0.0.1:4000/api/users/profiles/${userId}`);
-    
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
     
     
     useEffect(() => {
@@ -71,6 +79,7 @@ const Profile = () => {
     //         console.error('Error uploading file:', error);
     //     }
     // };
+    
     return (
         <>
             {loading && <div className="text-5xl text-center uppercase">Loading...</div>}
@@ -79,10 +88,16 @@ const Profile = () => {
 
             {/* <h1>Upload Profile Image</h1> */}
            <div className=' flex flex-col lg:flex-row  sm:pt-28 pt-20 sm:w-[95%] w-[90%] m-auto pb-20 justify-between'>
-               <div className='flex flex-row   gap-10 items-start justify-center'>
-                    {userId && <ProfilePicture size={250} userId={userId} />}
+               {userData && data && <div className='flex md:flex-row flex-col items-center text-center md:text-left  gap-10 md:items-start  justify-center'>
+                   <div className="relative">{
+                       userId &&  <ProfilePicture size={250} userId={userId}/>}
+                       { userData.id ===data.id &&<Tooltip title='edit profile' position='right' interactive trigger='mouseenter' className="absolute md:top-5 md:right-5 top-3 right-0">
+                           <FontAwesomeIcon icon={faPencilSquare} onClick={openModal} className='size-10 realative'/>
+                       </Tooltip>}
+                       {isModalOpen && <EditProfileForm closeModal={closeModal}/>}
+                   </div>
                     
-                    {userData && data && <div>
+                    { <div>
                         <h1 className='text-7 font-black leading-tight'>{data.author}</h1>
                         <p className='mb-2'>
                             <div className='font-bold'>bio:</div>
@@ -90,10 +105,10 @@ const Profile = () => {
                         </p>
                         <div>0 following</div>
                         <div>0 followers</div>
-                        {/* {userData.id !== userId && <p >hey</p>} */}
+                        {/* {userData.id === data.id && <p >hey</p>} */}
                         <div>{blogCount} blogs</div>
                     </div>}
-               </div>
+               </div>}
                 {/* <form onSubmit={handleSubmit}>
                     <label htmlFor='pfp'>change Profile Picture</label>
                     <input className="hidden" type="file" id="pfp" accept="image/*" onChange={handleImageChange} />

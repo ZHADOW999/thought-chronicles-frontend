@@ -7,10 +7,13 @@ import DOMPurify from "dompurify";
 import CardSkeleton from "./cardSkeleton";
 
 
+
 const BlogList = ({ blogs, isLoading,error }) => {
     const [hover1, setHover1] = useState(null);
     const [hover2, setHover2] = useState(null);
     const [hover3, setHover3] = useState(null);
+
+
 
     const sortedBlogs = blogs
         ? [...blogs].sort((a, b) => new Date(b.Blog.created_at) - new Date(a.Blog.created_at))
@@ -45,10 +48,10 @@ const BlogList = ({ blogs, isLoading,error }) => {
 
             {sortedBlogs.map((blog) => {
                 const { images, sanitizedContent } = extractImages(blog.Blog.body);
-                const shortContent = DOMPurify.sanitize(sanitizedContent).slice(0, 70); // Limit sanitized content to 70 chars
+                const shortContent = DOMPurify.sanitize(sanitizedContent).slice(0, 120); // Limit sanitized content to 70 chars
 
                 return (
-                    <div key={blog.Blog.id} className="rounded-xl mt-10 bg-white shadow-md p-2 sm:p-5 space-y-5">
+                    <div key={blog.Blog.id} className=" mt-5 bg-white shadow-md p-2 sm:p-5 ">
                         <div className="items-center flex flex-col md:flex-row w-full justify-between">
                             <div className="items-center flex flex-row w-full justify-between">
                                 <div className={`space-y-5 ${images.length > 0 ? "md:[40%] w-[65%]" : "md:w-[80%] w-[100%]"}`}>
@@ -64,7 +67,7 @@ const BlogList = ({ blogs, isLoading,error }) => {
                                             <Link to={`/profile/${blog.Blog.owner_id}`} className=" grid place-items-center cursor-pointer hover:underline font-semibold">
                                                 {blog.Blog.owner.author}
                                             </Link>
-                                            <p className="text-1 flex justify-center items-center opacity-50">{formatDate(blog.Blog.created_at)}</p>
+                                            <p className="md:text-1 text-[11px] flex justify-center items-center opacity-50">{formatDate(blog.Blog.created_at)}</p>
                                         </div>
                                     </div>
                                     <h2 className="sm:text-4xl text-xl mt-0 text-text-color font-sans font-medium">
@@ -80,7 +83,7 @@ const BlogList = ({ blogs, isLoading,error }) => {
                                         />...
                                         <Link
                                             to={`/${blog.Blog.id}`}
-                                            className="font-black tracking-wide text-black text-1.5 hover:text-blue-600 hover:underline"
+                                            className="font-black tracking-wide text-black md:text-1.5 hover:text-blue-600 hover:underline"
                                         >
                                             Read more
                                         </Link>
@@ -150,7 +153,7 @@ const BlogList = ({ blogs, isLoading,error }) => {
                                     {images.length > 0 && (
                                         <img
                                             src={images[0]}
-                                            alt="First blog image"
+                                            alt="First blog"
                                             className="bg-gray-400 md:w-60 md:h-44 w-24 h-16"
                                         />
                                     )}

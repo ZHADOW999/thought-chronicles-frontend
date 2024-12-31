@@ -98,8 +98,8 @@ const SearchBar = ({onSearch, width, height,showProfilePic,handleLogout,userId,d
         />
       </IconButton>
       
-      {showProfilePic && data && <div className="relative mr-2" onClick={() => setHoverProfile((prev) => !prev)}
-                 to={`/profile/${userId}`}><ProfilePicture   size={60} userId={data.id} />
+      {showProfilePic && data && <div className="relative mr-2 cursor-pointer border-bg-color-dark border-[1px] rounded-full" onClick={() => setHoverProfile((prev) => !prev)}
+                ><ProfilePicture   size={60} userId={data.id} />
 
 
                  {hoverProfile &&<div id="dropdown" className="z-10 absolute -right-10 -bottom-30 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
@@ -107,9 +107,9 @@ const SearchBar = ({onSearch, width, height,showProfilePic,handleLogout,userId,d
             <Link to={`/profile/${userId}`}>
                 <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">View Profile</button>
             </Link>
-            <li>
+            {/* <li>
                 <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit Profile</button>
-            </li>
+            </li> */}
             
             <Link to="/logout" onClick={handleLogout}>
                 <button type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</button>

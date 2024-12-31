@@ -39,6 +39,7 @@
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.28.0",
     "react-scripts": "^5.0.1",
+    "react-tippy": "^1.4.0",
     "serve": "^14.2.4",
     "tippy.js": "^6.3.7",
     "web-vitals": "^2.1.4"
@@ -69,6 +70,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "tailwindcss": "^3.4.15"
   }
 }

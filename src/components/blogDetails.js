@@ -50,7 +50,7 @@ const BlogDetails = () => {
             )}
             {blog && (
                 <article className="pt-32 md:w-[70%] w-[90%] m-auto flex flex-col gap-5 justify-center ">
-                    <h2 className="text-4xl ">{blog.Blog.title}</h2>
+                    <h2 className="text-2xl md:text-4xl ">{blog.Blog.title}</h2>
                     <div className="w-full mb-2 md:mb-0 flex flex-row  justify-start self-start h-auto">
                                 <Link to={`/profile/${blog.Blog.owner_id}`}>
                                     <ProfilePicture

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 
 const ProfilePicture = ({ userId,altText, size }) => {
+  
   const [profilePic, setProfilePic] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -42,12 +43,12 @@ const ProfilePicture = ({ userId,altText, size }) => {
    </div>;
 
   return (
-    <div className="profile-picture-container">
+    <div className="profile-picture-container relative">
       {profilePic ? (
         <img
           src={profilePic}
           alt={altText}
-          className=" object-cover rounded-full cursor-pointer  relative overflow-hidden bg-gray-100  dark:bg-gray-600 profile-pic-responsive"
+          className=" object-cover rounded-full   relative overflow-hidden bg-gray-100  dark:bg-gray-600 profile-pic-responsive"
           style={{'--default-size': `${size}px`,
            }}
           

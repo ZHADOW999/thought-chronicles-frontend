@@ -10,6 +10,7 @@ const UseFetchLoggedUser = (url) => {
             try {
                 const response = await api.get(url); // Use Axios to fetch user data
                 setUserData(response.data); // Assuming the user ID is in the response
+                // console.log("data: " , response.data);
                 // console.log(response.data);
             } catch (err) {
                 setUserError(err.message); // Set error message
