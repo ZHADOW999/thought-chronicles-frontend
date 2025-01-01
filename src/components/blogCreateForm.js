@@ -108,7 +108,7 @@ const BlogCreateForm = ({onSubmit,Blogtitle,BlogBody,title,body,isSubmitting,hea
                 </div>
 
                 {/* Submit Button */}
-                <div className="flex justify-center pt-20 ">
+                <div className="flex justify-center pt-40 md:pt-20 ">
                         <button
                             type="submit"
                             disabled={isSubmitting}

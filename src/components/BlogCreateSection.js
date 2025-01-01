@@ -18,13 +18,17 @@ const BlogCreate = () => {
         setIsPending(true);
 
         try {
-            await api.post("/api/blogs", post, {
+            const response= await api.post("/api/blogs", post, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("authToken")}`,
                     "Content-Type": "multipart/form-data",
                 },
                 withCredentials: true,
             });
+            if (!response.ok) {
+                throw new Error("Image must be below 1 megabyte");
+              }
+      
             setIsSubmitting(true)
             setIsPending(false);
             navigate("/");
@@ -32,6 +36,7 @@ const BlogCreate = () => {
         } catch (error) {
             console.error("Error creating the blog post:", error);
             setIsPending(false);
+            alert(error)
         }
     };
 

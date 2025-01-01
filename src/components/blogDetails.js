@@ -57,7 +57,7 @@ const BlogDetails = () => {
             {blog && (
                 <div className="pt-32 md:w-[70%] w-[90%] m-auto flex flex-col gap-5 justify-center ">
                     <h2 className="text-2xl md:text-4xl ">{blog.Blog.title}</h2>
-                    <div className="flex justify-between items-center">
+                    <div className="flex flex-col md:flex-row  justify-between md:items-center">
 
                         <div className="w-full mb-2 md:mb-0 flex flex-row  justify-start self-start h-auto">
                             <Link to={`/profile/${blog.Blog.owner_id}`}>
@@ -83,7 +83,7 @@ const BlogDetails = () => {
                                 </button>
                                 {deletePopUp && (
                                     <div className="fixed top-0 right-0 overflow-auto w-full h-full z-50 bg-black/50">
-                                        <div className="mt-52 m-auto flex flex-col items-center w-[30%] h-auto bg-white p-10 rounded-lg">
+                                        <div className="mt-52 m-auto flex flex-col items-center w-[90%] md:w-[30%] h-auto bg-white p-10 rounded-lg">
                                             <h2 className="text-2xl font-bold text-center mb-5">
                                                 Are you sure you want to delete this post ? 👀
                                             </h2>

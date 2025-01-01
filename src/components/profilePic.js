@@ -19,7 +19,7 @@ const ProfilePicture = ({ userId,altText, size }) => {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to fetch profile picture.");
+          throw new Error("Image must be below 1 megabyte");
         }
 
         // Create an object URL from the image blob

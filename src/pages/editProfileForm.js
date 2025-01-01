@@ -52,7 +52,7 @@ const {userId}=useParams();
       alert("Profile updated successfully!");
     } catch (error) {
       console.error("Error updating profile:", error);
-      alert("Failed to update profile. Please try again.");
+      alert("Image my be less than 1 megabyte!");
     }
   };
 
