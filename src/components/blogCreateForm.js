@@ -102,7 +102,7 @@ const BlogCreateForm = ({onSubmit,Blogtitle,BlogBody,title,body,isSubmitting,hea
                         value={body}
                         placeholder="Write your blog content..."
                         onChange={BlogBody} // Update state when editor content changes
-                        className="border border-gray-300 p-2 rounded w-full h-screen"
+                        className="  rounded w-full h-screen"
                         required
                     />
                 </div>

@@ -87,7 +87,7 @@ useEffect(() => {
         <nav className={` h-auto z-50 fixed bg-bg-color-light1 w-full  top-0 left-0 right-0 transition-transform duration-300 ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`}>
             <div className={` gap-5 md:gap-0 md:w-[80%] w-[95%]  p-2 m-auto flex justify-between items-center `}>
                 <Link to="/" className="flex items-center md:w-auto md:h-auto w-24 h-12 ">
-                    <img src={bg} alt="logo" className="sm:w-12 sm:h-12 w-14 h-14 rounded-full" /><p className="hidden md:block uppercase text-4 leading-none font-roboto-bold w-20"> thought chronicles</p>
+                    <img src={bg} alt="logo" className="sm:w-12 sm:h-12 w-14 h-14 rounded-full" /><p className="hidden md:block uppercase text-4 leading-none font-roboto-black w-20"> thought chronicles</p>
                 </Link>
                 <ul className={`hidden  z-50  md:flex    transition-all duration-300 ease-in-out  flex-row items-center justify-center sm:space-x-14 sm:space-y-0 sm:border-0 ${IsActive ? "right-0" : "-right-full"}`}>
                     <Link to="/library" className="capitalize font-roboto-bold hover:scale-110 transition-all duration-100 ease-linear hover:text-gray-900">Library</Link>

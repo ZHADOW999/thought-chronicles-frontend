@@ -17,7 +17,7 @@ const {userId}=useParams();
 
   const handleSubmit = async (e) => {
     
-
+    e.preventDefault()
     try {
       // Submit profile picture if provided
       if (profilePicture) {
@@ -35,7 +35,7 @@ const {userId}=useParams();
 
       // Submit author and bio if provided
       if (author || bio) {
-        await axios.put(`http://127.0.0.1:4000/api/users/profiles/${userId}`, { author, bio },{headers: {
+        await axios.put(`https://tc.a.7o7.cx/api/users/profiles/${userId}`, { author, bio },{headers: {
             Authorization: `Bearer ${localStorage.getItem('authToken')}`, // Include the token
             'Content-Type': 'multipart/form-data', // Ensure the content type is set correctly
         },
@@ -49,7 +49,7 @@ const {userId}=useParams();
       setauthor("");
       setBio("");
 
-    //   alert("Profile updated successfully!");
+      alert("Profile updated successfully!");
     } catch (error) {
       console.error("Error updating profile:", error);
       alert("Failed to update profile. Please try again.");
@@ -65,7 +65,7 @@ const {userId}=useParams();
         <>
           {/* Overlay */}
           <div
-            className="fixed inset-0 bg-black bg-opacity-70 z-40"
+            className="fixed top-0 right-0 bg-black bg-opacity-70 z-40 h-full"
             onClick={closeModal} // Close modal when clicking on overlay
           ></div>
 

@@ -39,6 +39,7 @@ const Profile = () => {
             // console.log(response.data);
         } catch (err) {
             setError(err.message); // Set error message
+            console.error(err);
         } finally {
             setLoading(false); // Set loading to false
         }
@@ -59,24 +60,24 @@ const Profile = () => {
             {/* <h1>Upload Profile Image</h1> */}
            <div className=' flex flex-col lg:flex-row  sm:pt-28 pt-20 sm:w-[95%] w-[90%] m-auto pb-20 justify-between'>
                {loading ?(
-                <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-md shadow h-64 animate-pulse w-[35%] mr-10">
+                <div className="w-full flex flex-col md:flex-row items-center space-y-4 md:space-x-4 p-4 bg-gray-50 rounded-md shadow h-auto md:h-64 animate-pulse md:w-[35%] mr-10">
                 {/* Profile Picture Skeleton */}
                 <div className="size-60 bg-gray-200 rounded-full animate-pulse"></div>
           
                 {/* Text Skeleton */}
-                <div className="flex-1 space-y-3 mt-2">
+                <div className="flex-1 space-y-3 mt-2 w-full flex flex-col justify-center items-center ">
                   {/* Name Skeleton */}
-                  <div className="h-6 bg-gray-200 rounded-md animate-pulse w-1/2 mt-2"></div>
+                  <div className="h-6 bg-gray-200 rounded-md animate-pulse w-[100%]   mt-2"></div>
           
                   {/* Bio and Stats Skeleton */}
-                  <div className="space-y-2  mt-2">
+                  <div className="space-y-2  mt-2 w-full md:block flex justify-center items-center flex-col">
                     <div className="h-4 bg-gray-200 rounded-md animate-pulse w-3/4"></div>
                     <div className="h-4 bg-gray-200 rounded-md animate-pulse w-2/4"></div>
                     <div className="h-4 bg-gray-200 rounded-md animate-pulse w-1/4"></div>
                   </div>
                 </div>
               </div>
-               ) :(<div className='flex md:flex-row flex-col items-center text-center md:text-left  gap-10 md:items-start  justify-center'>
+               ) :(<div className=' flex md:flex-row flex-col items-center text-center md:text-left  gap-10 md:items-start  justify-center'>
                    <div className="relative">{
                        userId &&  <ProfilePicture size={250} userId={userId}/>}
                        {userData && data && userData.id ===data.id &&<Tooltip title='edit profile' position='right' interactive trigger='mouseenter' className="absolute md:top-5 md:right-5 top-3 right-0">
@@ -85,10 +86,10 @@ const Profile = () => {
                        {isModalOpen && <EditProfileForm closeModal={closeModal}/>}
                    </div>
                     
-                    {data && <div className='font-roboto-regular'>
+                    {data && <div className='font-roboto-regular w-[50%]'>
                         <h1 className='text-7 font-roboto-bold leading-tight'>{data.author}</h1>
                         <p className='mb-2 font-roboto-regular'>
-                            <span className='font-roboto-bold mr-1'>bio: </span>
+                            <span className='font-roboto-bold mr-[1px]'>bio: </span>
                             {data.bio}
                         </p>
                         <div className='font-roboto-regular'>0 following</div>
