@@ -32,6 +32,17 @@ module.exports = {
 
       },
     },
+
+    fontFamily:{
+      'roboto-light': 'roboto-light',
+      'roboto-medium': 'roboto-medium',
+      'roboto-bold': 'roboto-bold',
+      'roboto-black': 'roboto-black',
+      'roboto-regular': 'roboto-regular',
+      'roboto-thin': 'roboto-thin',
+
+
+    }
   },
 
   

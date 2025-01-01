@@ -11,7 +11,7 @@ const ProfilePicture = ({ userId,altText, size }) => {
     const fetchProfilePicture = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`http://127.0.0.1:4000/api/users/${userId}/profile-picture`, {
+        const response = await fetch(`https://tc.a.7o7.cx/api/users/${userId}/profile-picture`, {
           method: "GET",
           headers: {
             "Content-Type": "image/jpeg",

@@ -11,7 +11,7 @@ const Home = () => {
 
     const searchQuery = searchParams.get("search") || ""; // Get the search term from the URL
     const [search, setSearch] = useState(searchQuery);
-    const [url, setUrl] = useState("http://127.0.0.1:4000/api/blogs");
+    const [url, setUrl] = useState("https://tc.a.7o7.cx/api/blogs");
     const { data: blogs, loading, error } = UseFetch(url, search);
 
     // Update the search term and URL when the query changes
@@ -19,8 +19,8 @@ const Home = () => {
         setSearch(searchQuery);
         setUrl(
             searchQuery
-                ? `http://127.0.0.1:4000/api/blogs?search=${encodeURIComponent(searchQuery)}`
-                : "http://127.0.0.1:4000/api/blogs"
+                ? `https://tc.a.7o7.cx/api/blogs?search=${encodeURIComponent(searchQuery)}`
+                : "https://tc.a.7o7.cx/api/blogs"
         );
     }, [searchQuery]);
 

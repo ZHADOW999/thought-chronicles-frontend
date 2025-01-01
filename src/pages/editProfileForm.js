@@ -24,7 +24,7 @@ const {userId}=useParams();
         const formData = new FormData();
         formData.append("file", profilePicture);
 
-        await axios.post(`http://127.0.0.1:4000/api/users/${userId}/upload-profile-picture`, formData, {
+        await axios.post(`https://tc.a.7o7.cx/api/users/${userId}/upload-profile-picture`, formData, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('authToken')}`, // Include the token
                 'Content-Type': 'multipart/form-data', // Ensure the content type is set correctly
@@ -88,7 +88,7 @@ const {userId}=useParams();
                     <img
                       src={URL.createObjectURL(profilePicture)}
                       alt="Preview"
-                      className="mx-auto mt-2 rounded-lg w-32 h-32 object-cover"
+                      className="mx-auto mt-2 rounded-full w-32 h-32 object-cover"
                     />
                   )}
                 </div>
@@ -115,7 +115,7 @@ const {userId}=useParams();
                   <button
                     type="button"
                     onClick={closeModal}
-                    className="px-4 py-2 bg-yellow-400 text-black rounded-lg hover:bg-yellow-500 transition"
+                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-500 transition"
                   >
                     Cancel
                   </button>

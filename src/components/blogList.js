@@ -64,19 +64,19 @@ const BlogList = ({ blogs, isLoading,error }) => {
                                             />
                                         </Link>
                                         <div className="w-full ml-5 flex-row gap-10 flex md:mt-0">
-                                            <Link to={`/profile/${blog.Blog.owner_id}`} className=" grid place-items-center cursor-pointer hover:underline font-semibold">
+                                            <Link to={`/profile/${blog.Blog.owner_id}`} className="font-roboto-medium grid place-items-center cursor-pointer hover:underline ">
                                                 {blog.Blog.owner.author}
                                             </Link>
-                                            <p className="md:text-1 text-[11px] flex justify-center items-center opacity-50">{formatDate(blog.Blog.created_at)}</p>
+                                            <p className="font-roboto-regular md:text-1 text-[11px] flex justify-center items-center opacity-50">{formatDate(blog.Blog.created_at)}</p>
                                         </div>
                                     </div>
-                                    <h2 className="sm:text-4xl text-xl mt-0 text-text-color font-sans font-medium">
+                                    <h2 className="sm:text-4xl text-xl mt-0 text-text-color font-sans font-roboto-bold">
                                         {blog.Blog.title}
                                     </h2>
 
                                     <p className="ptag mt-0 text-1.5 md:text-2 text-gray-600 flex flex-wrap">
                                         <span
-                                            className="flex mt-0"
+                                            className="flex mt-0 font-roboto-regular"
                                             dangerouslySetInnerHTML={{
                                                 __html: shortContent,
                                             }}

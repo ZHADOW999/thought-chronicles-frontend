@@ -32,7 +32,7 @@ const EditBlog = () => {
                 setBody(blog.body);   // Pre-fill body
                 setLoading(false);
             } catch (err) {
-                setError("Failed to fetch blog");
+                setError("Failed to fetch blog"+err);
                 setLoading(false);
                 console.error(err);
             }
