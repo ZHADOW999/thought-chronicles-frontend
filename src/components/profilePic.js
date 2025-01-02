@@ -48,7 +48,7 @@ const ProfilePicture = ({ userId,altText, size }) => {
         <img
           src={profilePic}
           alt={altText}
-          className=" object-cover rounded-full   relative overflow-hidden bg-gray-100  dark:bg-gray-600 profile-pic-responsive"
+          className=" object-cover  rounded-full    overflow-hidden bg-gray-100  profile-pic-responsive"
           style={{'--default-size': `${size}px`,
            }}
           

@@ -175,8 +175,7 @@ body{
   margin-top: 0.5rem !important;
 }
 
-
-
+/* book loader */
 * {
   box-sizing: border-box;
 }
@@ -316,3 +315,5 @@ body {
     content: "...";
   }
 }
+
+

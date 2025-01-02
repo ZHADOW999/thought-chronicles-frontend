@@ -53,14 +53,14 @@ const Profile = () => {
     
     return (
         <>
-            {loading && <div className="text-5xl text-center uppercase">Loading...</div>}
+            {/* {loading && <div className="text-5xl text-center uppercase">Loading...</div>} */}
             {error && <div className=" text-4xl uppercase mt-40 w-[80%] m-auto flex flex-col gap-5 justify-center items-center">{error}</div>}
 
 
             {/* <h1>Upload Profile Image</h1> */}
            <div className=' flex flex-col lg:flex-row  sm:pt-28 pt-20 sm:w-[95%] w-[100%] m-auto pb-20 justify-between'>
                {loading ?(
-                <div className="w-full flex flex-col md:flex-row items-center space-y-4 md:space-x-4 p-4 bg-gray-50 rounded-md shadow h-auto md:h-64 animate-pulse md:w-[35%] mr-10">
+                <div className="w-full flex flex-col items-center space-y-4 md:space-x-4 p-4 bg-gray-50 rounded-md shadow h-auto md:h-96 animate-pulse md:w-[35%] mr-10">
                 {/* Profile Picture Skeleton */}
                 <div className="size-60 bg-gray-200 rounded-full animate-pulse"></div>
           
@@ -77,7 +77,7 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
-               ) :(<div className=' flex md:flex-row flex-col items-center text-center md:text-left  gap-10 md:items-start  justify-center'>
+               ) :(<div className=' flex  flex-col items-center text-center md:text-left  gap-5 md:items-start  md:justify-start justify-center'>
                    <div className="relative">{
                        userId &&  <ProfilePicture size={250} userId={userId}/>}
                        {userData && data && userData.id ===data.id &&<Tooltip title='edit profile' position='right' interactive trigger='mouseenter' className="absolute md:top-5 md:right-5 top-3 right-0">
@@ -86,12 +86,12 @@ const Profile = () => {
                        {isModalOpen && <EditProfileForm closeModal={closeModal}/>}
                    </div>
                     
-                    {data && <div className='font-roboto-regular w-[50%]'>
-                        <h1 className='text-7 font-roboto-bold leading-tight'>{data.author}</h1>
-                        <p className='mb-2 font-roboto-regular'>
+                    {data && <div className='font-roboto-regular w-[50%] '>
+                        <h1 className=' mx-auto text-5 font-roboto-bold leading-tight text-wrap whitespace-normal w-auto break-words'>{data.author}</h1>
+                        {data.bio !== null && <p className='mb-2 font-roboto-regular'>
                             <span className='font-roboto-bold mr-[1px]'>bio: </span>
                             {data.bio}
-                        </p>
+                        </p>}
                         <div className='font-roboto-regular'>0 following</div>
                         <div className='font-roboto-regular'>0 followers</div>
                         {/* {userData.id === data.id && <p >hey</p>} */}

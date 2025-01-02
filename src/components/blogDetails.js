@@ -50,7 +50,7 @@ const BlogDetails = () => {
                 </div>
             )}
             {error && (
-                <div className="text-4xl uppercase mt-40 w-[80%] m-auto flex flex-col gap-5 justify-center items-center">
+                <div className="text-4xl mt-40 w-[80%] m-auto flex flex-col gap-5 justify-center items-center">
                     {error}
                 </div>
             )}
