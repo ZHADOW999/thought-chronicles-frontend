@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_project=self.webpackChunkmy_project||[]).push([[73],{6073:(s,e,c)=>{c.r(e),c.d(e,{default:()=>n});c(9950);var r=c(3520),t=c(6328),j=c(6991),a=c(4414);const n=()=>(0,a.jsxs)(a.Fragment,{children:[(0,a.jsx)(r.A,{}),(0,a.jsx)(t.A,{}),(0,a.jsx)(j.A,{})]})}}]);
