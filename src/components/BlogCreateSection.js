@@ -33,10 +33,13 @@ const BlogCreate = () => {
             setIsPending(false);
             navigate("/");
             console.log("Blog posted successfully");
-        } catch (error) {
-            console.error("Error creating the blog post:", error);
-            setIsPending(false);
-            alert(error)
+        } catch (err) {
+            if (err.response?.status === 413) {
+                alert("Error: Payload too large. Ensure the image or content size is below 1MB.");
+              } else {
+                console.error("Error updating blog:", err);
+                alert("Error updating blog: " + (err.response?.data?.message || err.message));
+              }
         }
     };
     
