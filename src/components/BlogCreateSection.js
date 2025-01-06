@@ -25,7 +25,7 @@ const BlogCreate = () => {
                 },
                 withCredentials: true,
             });
-            if (!response.ok) {
+            if (response.status === 413 ) {
                 throw new Error("Image must be below 1 megabyte");
               }
       
@@ -39,7 +39,6 @@ const BlogCreate = () => {
             alert(error)
         }
     };
-
     
 
     return (

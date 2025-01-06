@@ -40,10 +40,10 @@ const BlogDetails = () => {
         <div className="bg-bg-color-light1">
             {loading && (
                 <div className="min-h-screen flex w-full justify-center items-center flex-col">
-                    <div class="loader book">
-                        <figure class="page"></figure>
-                        <figure class="page"></figure>
-                        <figure class="page"></figure>
+                    <div className="loader book">
+                        <figure className="page"></figure>
+                        <figure className="page"></figure>
+                        <figure className="page"></figure>
                     </div>
 
                     <h1 className="load">Loading</h1>
